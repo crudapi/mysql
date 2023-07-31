@@ -43,8 +43,8 @@ docker run --name mariadb \
 --env MARIADB_USER=crudapi \
 --env MARIADB_PASSWORD=crudapi \
 --env MARIADB_ROOT_PASSWORD=root \
--p "3307:3307" \
--p "33070:33070" \
+-p "3307:3306" \
+-p "33070:33060" \
 -v "/opt/crudapi/mariadb/data:/var/lib/mysql" \
 -d mariadb:latest
 ```
