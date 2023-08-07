@@ -39,14 +39,14 @@ chmod 777 /opt/crudapi/mariadb
 docker pull mariadb
 docker rm -f mariadb
 docker run --name mariadb \
---env MARIADB_DATABASE=crudapi \
---env MARIADB_USER=crudapi \
---env MARIADB_PASSWORD=crudapi \
---env MARIADB_ROOT_PASSWORD=root \
--p "3307:3306" \
--p "33070:33060" \
--v "/opt/crudapi/mariadb/data:/var/lib/mysql" \
--d mariadb:latest
+   --restart=always \
+   -e TZ=Asia/Shanghai \
+   -e MARIADB_DATABASE=crudapi \
+   -e MARIADB_ROOT_PASSWORD=root@Mysql \
+   -p "3307:3306" \
+   -p "33070:33060" \
+   -v "/opt/crudapi/mariadb/data:/var/lib/mysql" \
+   -d mariadb:latest
 ```
 
 ### mariadb phpmyadmin
