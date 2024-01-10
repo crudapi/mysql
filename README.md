@@ -11,7 +11,7 @@ docker rm -f mysql
 docker run --privileged --name "mysql" \
    --restart=always \
    -e "MYSQL_DATABASE=crudapi" \
-   -e "MYSQL_ROOT_PASSWORD=" \
+   -e "MYSQL_ROOT_PASSWORD=root@Mysql" \
    -e "TZ=Asia/Shanghai" \
    -p "3306:3306" \
    -p "33060:33060" \
@@ -26,6 +26,7 @@ docker run --privileged --name "mysql" \
 docker rm -f mysqladmin
 docker run --name mysqladmin \
    --restart=always \
+   -e UPLOAD_LIMIT=100M \
    --link mysql:db \
    -p 8081:80 \
    -d phpmyadmin/phpmyadmin
@@ -54,6 +55,7 @@ docker run --name mariadb \
 docker rm -f mariadbadmin
 docker run --name mariadbadmin \
    --restart=always \
+   -e UPLOAD_LIMIT=100M \
    --link mariadb:db \
    -p 8082:80 \
    -d phpmyadmin/phpmyadmin
