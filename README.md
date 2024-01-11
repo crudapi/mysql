@@ -18,7 +18,9 @@ docker run --privileged --name "mysql" \
    -v "/opt/crudapi/mysql/data:/var/lib/mysql" \
    -d crudapi-mysql  \
    --character-set-server=utf8mb4 \
-   --collation-server=utf8mb4_unicode_ci
+   --collation-server=utf8mb4_unicode_ci \
+   --lower_case_table_names=0 \
+   --innodb_ft_min_token_size=1
 ```
 
 ### mysql phpmyadmin
